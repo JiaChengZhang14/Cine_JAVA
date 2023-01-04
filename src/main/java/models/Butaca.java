@@ -3,15 +3,22 @@ package models;
 import enums.ESTADOS;
 
 public class Butaca {
-    private static ESTADOS estados;
+    Butaca(ESTADOS estados){
 
-    @Override
-    public String toString() {
-        return switch(new Butaca()){
-            ESTADOS.LIBRE: System.out.println("💺");
-            Butaca(estados = ESTADOS.RESERVADO) -> "❌"
-            Butaca(estados = ESTADOS.OCUPADO) -> "🍿"
-
-        }
     }
+
+//    @Override
+//    public String toString() {
+//        return switch (ESTADOS)) {
+//            case ESTADOS.LIBRE: {
+//                System.out.println("💺");
+//            }
+//            case ESTADOS.RESERVADO: {
+//                System.out.println("❌");
+//            }
+//            case ESTADOS.OCUPADO: {
+//                System.out.println("🍿");
+//            }
+//        }
+//    }
 }

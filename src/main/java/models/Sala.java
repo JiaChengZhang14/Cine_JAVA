@@ -1,21 +1,23 @@
 package models;
 
+import enums.ESTADOS;
+
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
+public record Sala(String nombre) {
+    static Butaca FREE_SEAT = new Butaca(ESTADOS.LIBRE);
+    static Butaca RESERVED_SEAT = new Butaca(ESTADOS.RESERVADO);
+    static Butaca SOLD_SEAT = new Butaca(ESTADOS.OCUPADO);
 
 
- public record Sala(String nombre){
-     val FREE_SEAT = Butaca(estado = ESTADOS.LIBRE);
-     val RESERVED_SEAT = Butaca(estado = ESTADOS.RESERVADO);
-     val SOLD_SEAT = Butaca(estado = ESTADOS.OCUPADO);
+    static Double totalCash = 0.0;
+    static int soldSeatsCount = 0;
+    static int reservedSeatsCount = 0;
+    static Scanner sc = new Scanner(System.in);
 
-
-     static Double totalCash = 0.0;
-     static int soldSeatsCount = 0;
-     static int reservedSeatsCount = 0;
-     private static Scanner sc = new Scanner(System.in);
-
-    public static void generateReport(String roomName ) {
+    public static void generateReport(String roomName) {
         System.out.println("ESTE ES EL INFORME DEL CINE");
         System.out.println(" - La película reproducida es ${Pelicula()}");
         System.out.println(" - Está siendo reproducida en la sala ${Sala(nombre = roomName)}");
@@ -34,27 +36,28 @@ import java.util.Scanner;
         System.out.println("4 -> COMPRAR ASIENTO");
         System.out.println("5 -> GENERAR INFORME DEL CINE");
         System.out.println("6 -> SALIR");
+        String option;
         do {
             System.out.println("Opción seleccionada: ");
-            String option = readln();
-            if (option.toInt() > 6 || option.toInt() < 1) {
+            option = sc.nextLine();
+            if (parseInt(option) > 6 || parseInt(option) < 1) {
                 System.out.println("Opción no valida");
             } else {
-                return option.toInt();
+                return parseInt(option);
             }
-        } while (option.toInt() > 6 || option.toInt() < 1);
+        } while (parseInt(option) > 6 || parseInt(option) < 1);
         return 0;
     }
 
-    public static void processPucharse(soldSeat: String, seatsMatrix: Array<Array<Butaca?>>) {
-        val pucharsedSeat = soldSeat.split(":").toTypedArray();
-        val rowLetter = pucharsedSeat[0];
-        val processedRow = rowLetterToNumber(rowLetter);
-        val selectedColumn = pucharsedSeat[1];
+    public static void processPucharse(String soldSeat, seatsMatrix:Array<Array<Butaca?>>) {
+        String[] pucharsedSeat = soldSeat.split(":");
+        String rowLetter = pucharsedSeat[0];
+        int processedRow = rowLetterToNumber(rowLetter);
+        String selectedColumn = pucharsedSeat[1];
         changeSeatStatusToOccupied(seatsMatrix, selectedColumn, processedRow);
     }
 
-    public static void buySeat(seatsMatrix: Array<Array<Butaca?>>, row: Int, column: Int): String {
+    public static String buySeat(seatsMatrix:Array<Array<Butaca?>>, int row, int column) {
         System.out.println();
         var soldSeat = "";
         val regex = """[A-Z][:][0-9]+""".toRegex();
@@ -64,29 +67,29 @@ import java.util.Scanner;
         do {
 
             do {
-                soldSeat = readln()
-                if (!regex.matches(soldSeat.uppercase())) {
+                soldSeat = sc.nextLine();
+                if (!regex.matches(soldSeat.toUpperCase())) {
                     System.out.println("Debes el introducir la LETRA de la fila y el NÚMERO de la columna. Ejemplo: A:1 ");
                 }
-                if (regex.matches(soldSeat.uppercase())) {
-                    if (!doesColumnExist(soldSeat, column)){
+                if (regex.matches(soldSeat.toUpperCase())) {
+                    if (!doesColumnExist(soldSeat, column)) {
                         System.out.println("La columna que has elegido no existe, elige otro asiento.");
                     }
                 }
-                if (regex.matches(soldSeat.uppercase())) {
-                    if (!doesRowExist(soldSeat, row)){
+                if (regex.matches(soldSeat.toUpperCase())) {
+                    if (!doesRowExist(soldSeat, row)) {
                         System.out.println("La fila que has elegido no existe, elige otro asiento.");
                     }
                 }
 
-            } while (!regex.matches(soldSeat.uppercase()) || !doesColumnExist(soldSeat, column));
+            } while (!regex.matches(soldSeat.toUpperCase()) || !doesColumnExist(soldSeat, column));
 
 
-            if (isSeatReserved(soldSeat, seatsMatrix)){
+            if (isSeatReserved(soldSeat, seatsMatrix)) {
                 System.out.println("El asiento que has elegido, ha sido reservado anteriormente, elige otro: ");
             }
 
-        }while (isSeatReserved(soldSeat, seatsMatrix));
+        } while (isSeatReserved(soldSeat, seatsMatrix));
         System.out.println("El asiento ha sido comprado correctamente");
         System.out.println("Se te ha hecho el cobre de 5.25€ automáticamente.");
         totalCash += 5.25;
@@ -94,24 +97,24 @@ import java.util.Scanner;
         return soldSeat;
     }
 
-    public static void processFormalization(formalizedReservation: String, seatsMatrix: Array<Array<Butaca?>>) {
-        val processedFormalization = formalizedReservation.split(":").toTypedArray();
-        val selectedRow = processedFormalization[0];
-        val selectedColumn = processedFormalization[1];
-        val processedRow = rowLetterToNumber(selectedRow);
+    public static void processFormalization(String formalizedReservation, seatsMatrix:Array<Array<Butaca?>>) {
+        String[] processedFormalization = formalizedReservation.split(":");
+        String selectedRow = processedFormalization[0];
+        String selectedColumn = processedFormalization[1];
+        int processedRow = rowLetterToNumber(selectedRow);
 
 
         changeSeatStatusToOccupied(seatsMatrix, selectedColumn, processedRow);
         printSeats(seatsMatrix);
     }
 
-    public static void changeSeatStatusToOccupied(seatsMatrix: Array<Array<Butaca?>>,String selectedColumn ,int processedRow){
-        seatsMatrix[processedRow][selectedColumn.toInt()-1] = SOLD_SEAT;
+    public static void changeSeatStatusToOccupied(seatsMatrix:Array<Array<Butaca?>>, String selectedColumn, int processedRow) {
+        seatsMatrix[processedRow][selectedColumn.toInt() - 1] = SOLD_SEAT;
 
     }
 
 
-    public static String formalizeReservation(seatsMatrix: Array<Array<Butaca?>>, int column, int row) {
+    public static String formalizeReservation(seatsMatrix:Array<Array<Butaca?>>, int column, int row) {
         System.out.println();
         var toBeFormalizedReservation = "";
         val regex = """[A-Z][:][0-9]+""".toRegex();
@@ -121,28 +124,28 @@ import java.util.Scanner;
 
             do {
                 toBeFormalizedReservation = String.valueOf(sc);
-                if (!regex.matches(toBeFormalizedReservation.uppercase())) {
+                if (!regex.matches(toBeFormalizedReservation.toUpperCase())) {
                     System.out.println("Debes el introducir la LETRA de la fila y el NÚMERO de la columna. Ejemplo: A:1 ");
                 }
-                if (regex.matches(toBeFormalizedReservation.uppercase())) {
-                    if (!doesColumnExist(toBeFormalizedReservation, column)){
+                if (regex.matches(toBeFormalizedReservation.toUpperCase())) {
+                    if (!doesColumnExist(toBeFormalizedReservation, column)) {
                         System.out.println("La columna que has elegido no existe, elige otro asiento.");
                     }
                 }
-                if (regex.matches(toBeFormalizedReservation.uppercase())) {
-                    if (!doesRowExist(toBeFormalizedReservation, row)){
+                if (regex.matches(toBeFormalizedReservation.toUpperCase())) {
+                    if (!doesRowExist(toBeFormalizedReservation, row)) {
                         System.out.println("La fila que has elegido no existe, elige otro asiento.");
                     }
                 }
 
-            } while (!regex.matches(toBeFormalizedReservation.uppercase()) || !doesColumnExist(toBeFormalizedReservation, column))
+            } while (!regex.matches(toBeFormalizedReservation.toUpperCase()) || !doesColumnExist(toBeFormalizedReservation, column))
 
             // Desde aquí hacia arriba, nos aseguramos de que el asiento que el usuario ha elegido está escrito de la manera que queremos y que está dentro de los límites de la matriz de asientos.
-            if (!isSeatReserved(toBeFormalizedReservation, seatsMatrix)){
+            if (!isSeatReserved(toBeFormalizedReservation, seatsMatrix)) {
                 System.out.println("El asiento que has elegido, no ha sido reservado anteriormente, elige otro: ");
             }
 
-        }while (!isSeatReserved(toBeFormalizedReservation, seatsMatrix));
+        } while (!isSeatReserved(toBeFormalizedReservation, seatsMatrix));
         System.out.println("Has formalizado la reserva correctamente! Ya se te ha hecho el cobro de los 4€ restantes. Muchas gracias! ");
         totalCash += 4;
         reservedSeatsCount--;
@@ -152,8 +155,7 @@ import java.util.Scanner;
     }
 
 
-
-     public static void processCancellation(toBeCancelledSeat: String, seatsMatrix: Array<Array<Butaca?>>) {
+    public static void processCancellation(toBeCancelledSeat:String, seatsMatrix:Array<Array<Butaca?>>) {
         val processedCancellation = toBeCancelledSeat.split(":").toTypedArray();
         val selectedRow = processedCancellation[0];
         val selectedColumn = processedCancellation[1];
@@ -164,13 +166,15 @@ import java.util.Scanner;
         printSeats(seatsMatrix);
     }
 
-    public static void changeSeatStatusToFree(seatsMatrix: Array<Array<Butaca?>>, selectedColumn: String, processedRow: Int): Array<Array<Butaca?>> {
+    public static void changeSeatStatusToFree(seatsMatrix:Array<Array<Butaca?>>, String selectedColumn ,int processedRow):Array<Array<Butaca?>>
 
-        seatsMatrix[processedRow][selectedColumn.toInt()-1] = FREE_SEAT;
+    {
+
+        seatsMatrix[processedRow][selectedColumn.toInt() - 1] = FREE_SEAT;
         return seatsMatrix;
     }
 
-    public static void cancelReservation(seatsMatrix: Array<Array<Butaca?>>, column: Int, row: Int): String {
+    public static String cancelReservation(seatsMatrix:Array<Array<Butaca?>>,int column, int row) {
         System.out.println();
         var toBeCancelledSeat = "";
         val regex = """[A-Z][:][0-9]+""".toRegex();
@@ -179,29 +183,29 @@ import java.util.Scanner;
         do {
 
             do {
-                toBeCancelledSeat = readln()
-                if (!regex.matches(toBeCancelledSeat.uppercase())) {
+                toBeCancelledSeat = sc.nextLine();
+                if (!regex.matches(toBeCancelledSeat.toUpperCase())) {
                     System.out.println("Debes el introducir la LETRA de la fila y el NÚMERO de la columna. Ejemplo: A:1 ");
                 }
-                if (regex.matches(toBeCancelledSeat.uppercase())) {
-                    if (!doesColumnExist(toBeCancelledSeat, column)){
+                if (regex.matches(toBeCancelledSeat.toUpperCase())) {
+                    if (!doesColumnExist(toBeCancelledSeat, column)) {
                         System.out.println("La columna que has elegido no existe, elige otro asiento.");
                     }
                 }
-                if (regex.matches(toBeCancelledSeat.uppercase())) {
-                    if (!doesRowExist(toBeCancelledSeat, row)){
+                if (regex.matches(toBeCancelledSeat.toUpperCase())) {
+                    if (!doesRowExist(toBeCancelledSeat, row)) {
                         System.out.println("La fila que has elegido no existe, elige otro asiento.");
                     }
                 }
 
-            } while (!regex.matches(toBeCancelledSeat.uppercase()) || !doesColumnExist(toBeCancelledSeat, column));
+            } while (!regex.matches(toBeCancelledSeat.toUpperCase()) || !doesColumnExist(toBeCancelledSeat, column));
 
             // Desde aquí hacia arriba, nos aseguramos de que el asiento que el usuario ha elegido está escrito de la manera que queremos y que está dentro de los límites de la matriz de asientos.
-            if (!isSeatReserved(toBeCancelledSeat, seatsMatrix)){
+            if (!isSeatReserved(toBeCancelledSeat, seatsMatrix)) {
                 System.out.println("El asiento que has elegido, no ha sido reservado anteriormente, elige otro: ");
             }
 
-        }while (!isSeatReserved(toBeCancelledSeat, seatsMatrix));
+        } while (!isSeatReserved(toBeCancelledSeat, seatsMatrix));
         System.out.println("Has cancelado la reserva correctamente");
         totalCash -= 1.25;
         System.out.println("Se te ha devuelto 1.25€");
@@ -209,17 +213,17 @@ import java.util.Scanner;
         return toBeCancelledSeat;
     }
 
-    public static void isSeatReserved(String toBeCancelledSeat, seatsMatrix: Array<Array<Butaca?>>):Boolean {
-        val aux = toBeCancelledSeat.split(":").toTypedArray();
-        val auxRow = aux[0];
-        val processedRow = rowLetterToNumber(auxRow);
-        val auxColumn = aux[1];
-        return seatsMatrix[processedRow][auxColumn.toInt()-1] == RESERVED_SEAT;
+    public static boolean isSeatReserved(String toBeCancelledSeat, seatsMatrix:Array<Array<Butaca?>>) {
+        String[] aux = toBeCancelledSeat.split(":");
+        String auxRow = aux[0];
+        int processedRow = rowLetterToNumber(auxRow);
+        String auxColumn = aux[1];
+        return seatsMatrix[processedRow][parseInt(auxColumn) - 1] == RESERVED_SEAT;
 
     }
 
 
-    public static void processReservation(String reservation, seatsMatrix: Array<Array<Butaca?>>) {
+    public static void processReservation(String reservation, seatsMatrix:Array<Array<Butaca?>>) {
         val processedReservation = reservation.split(":").toTypedArray();
         val selectedRow = processedReservation[0];
         val selectedColumn = processedReservation[1];
@@ -230,45 +234,47 @@ import java.util.Scanner;
 
     }
 
-    public static void changeSeatStatusToReserved(seatsMatrix: Array<Array<Butaca?>>, selectedColumn: String, processedRow: Int): Array<Array<Butaca?>> {
+    public static void changeSeatStatusToReserved(seatsMatrix:Array<Array<Butaca?>>, String selectedColumn, int processedRow):Array<Array<Butaca?>>
+
+    {
 
         seatsMatrix[processedRow][selectedColumn.toInt() - 1] = RESERVED_SEAT;
         return seatsMatrix;
     }
 
-    public static void rowLetterToNumber(selectedRow: String): Int {
-        when (selectedRow.uppercase()) {
-            "A" -> return 0;
-            "B" -> return 1;
-            "C" -> return 2;
-            "D" -> return 3;
-            "E" -> return 4;
-            "F" -> return 5;
-            "G" -> return 6;
-            "H" -> return 7;
-            "I" -> return 8;
-            "J" -> return 9;
-            "K" -> return 10;
-            "L" -> return 11;
-            "M" -> return 12;
-            "N" -> return 13;
-            "O" -> return 14;
-            "P" -> return 15;
-            "Q" -> return 16;
-            "R" -> return 17;
-            "S" -> return 18;
-            "T" -> return 19;
-            "U" -> return 20;
-            "V" -> return 21;
-            "W" -> return 22;
-            "X" -> return 23;
-            "Y" -> return 24;
-            "Z" -> return 25;
-        }
-        return -1;
+    public static int rowLetterToNumber(String selectedRow) {
+        return switch (selectedRow.toUpperCase()) {
+            case "A" -> 0;
+            case "B" -> 1;
+            case "C" -> 2;
+            case "D" -> 3;
+            case "E" -> 4;
+            case "F" -> 5;
+            case "G" -> 6;
+            case "H" -> 7;
+            case "I" -> 8;
+            case "J" -> 9;
+            case "K" -> 10;
+            case "L" -> 11;
+            case "M" -> 12;
+            case "N" -> 13;
+            case "O" -> 14;
+            case "P" -> 15;
+            case "Q" -> 16;
+            case "R" -> 17;
+            case "S" -> 18;
+            case "T" -> 19;
+            case "U" -> 20;
+            case "V" -> 21;
+            case "W" -> 22;
+            case "X" -> 23;
+            case "Y" -> 24;
+            case "Z" -> 25;
+            default -> -1;
+        };
     }
 
-    public static String reverseSeat(seatsMatrix: Array<Array<Butaca?>>,int column, int row) {
+    public static String reverseSeat(seatsMatrix:Array<Array<Butaca?>>, int column, int row) {
         System.out.println();
         var reservedSeat = "";
         val regex = """[A-Z][:][0-9]+""".toRegex();
@@ -279,43 +285,43 @@ import java.util.Scanner;
         System.out.println("Introduce el asiento: ");
 
         do {
-            reservedSeat = readln()
-            if (!regex.matches(reservedSeat.uppercase())) {
+            reservedSeat = sc.nextLine();
+            if (!regex.matches(reservedSeat.toUpperCase())) {
                 System.out.println("Debes el introducir la LETRA de la fila y el NÚMERO de la columna. Ejemplo: A:1 ")
             }
-            if (regex.matches(reservedSeat.uppercase())) {
-                if (!doesColumnExist(reservedSeat, column)){
+            if (regex.matches(reservedSeat.toUpperCase())) {
+                if (!doesColumnExist(reservedSeat, column)) {
                     System.out.println("La columna que has elegido no existe, elige otro asiento.");
                 }
             }
-            if (regex.matches(reservedSeat.uppercase())) {
-                if (!doesRowExist(reservedSeat, row)){
+            if (regex.matches(reservedSeat.toUpperCase())) {
+                if (!doesRowExist(reservedSeat, row)) {
                     System.out.println("La fila que has elegido no existe, elige otro asiento.");
                 }
             }
 
-        } while (!regex.matches(reservedSeat.uppercase()) || !doesColumnExist(reservedSeat, column))
+        } while (!regex.matches(reservedSeat.toUpperCase()) || !doesColumnExist(reservedSeat, column))
         totalCash += 1.25;
         reservedSeatsCount++;
         System.out.println("El precio de la reserva es de 1.25€, cuando formalice la reserva se le cobrarán 4 euros para completar el precio de la entrada que es de 5.25")
-        System.out.println("Se te ha cobrado $totalCash")
+        System.out.println("Se te ha cobrado $totalCash");
         return reservedSeat;
     }
 
-    public static void doesRowExist(reservedSeat: String, row: Int): Boolean {
-        val filteredRow = reservedSeat.split(":").toTypedArray();
-        val rowNumber = rowLetterToNumber(filteredRow[0]);
+    public static boolean doesRowExist(String reservedSeat,int row) {
+        String[] filteredRow = reservedSeat.split(":");
+        int rowNumber = rowLetterToNumber(filteredRow[0]);
         return rowNumber <= row;
     }
 
-    public static void doesColumnExist(reservedSeat: String, column: Int): Boolean {
-        val filteredColumn = reservedSeat.split(":").toTypedArray();
-        return filteredColumn[1].toInt() <= column;
+    public static boolean doesColumnExist(String reservedSeat, int  column){
+        String[] filteredColumn = reservedSeat.split(":");
+        return parseInt(filteredColumn[1]) <= column;
 
     }
 
 
-    public static void placeSeats(seatsMatrix: Array<Array<Butaca?>>) {
+    public static void placeSeats(seatsMatrix:Array<Array<Butaca?>>) {
         for (i in seatsMatrix.indices) {
             for (j in seatsMatrix[i].indices) {
                 seatsMatrix[i][j] = Butaca();
@@ -323,27 +329,28 @@ import java.util.Scanner;
         }
     }
 
-    public static void printSeats(seatsMatrix: Array<Array<Butaca?>>) {
+    public static void printSeats(seatsMatrix:Array<Array<Butaca?>>) {
         for (i in seatsMatrix.indices) {
             System.out.println(seatsMatrix[i].contentToString());
         }
 
     }
+
     public static String requestRoomName() {
         System.out.println("Introduce el nombre de la sala de cine:");
         var roomName = "";
-        roomName = sc();
+        roomName = sc.nextLine();
         return roomName;
     }
 
 
-     public static int requestColumnSize() {
+    public static int requestColumnSize() {
         val regexColumn = """\d+""".toRegex();
         val minColumnSize = 1;
         var column = "";
         do {
             System.out.println("¿Cuántas columnas de butacas quieres?");
-            column = readln();
+            column = sc.nextLine();
             if (!regexColumn.matches(column) || column.toInt() < minColumnSize) {
                 System.out.println("¡EL VALOR INTRODUCIDO DEBER SER UN NUMERO ENTERO");
             }
@@ -351,7 +358,9 @@ import java.util.Scanner;
         return column.toInt();
     }
 
-    public static int requestRowSize(): Int {
+    public static int requestRowSize():
+
+    Int {
         val regexRow = """\d+""".toRegex();
         /*
         Vamos a nombrar las butacas con letras en la fila, por lo que el máximo valor permitido en la fila es de 26
@@ -362,7 +371,7 @@ import java.util.Scanner;
         var fila = "";
         do {
             System.out.println("¿Cuántas filas de butacas quieres?");
-            fila = readln();
+            fila = sc.nextLine();
             if (!regexRow.matches(fila) || fila.toInt() > maxRowSize || fila.toInt() < minRowSize) {
                 System.out.println("¡EL VALOR INTRODUCIDO DEBER SER UN NUMERO ENTERO ENTRE 1 Y 26!");
             }
