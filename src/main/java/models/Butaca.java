@@ -1,24 +1,24 @@
 package models;
 
+
 import enums.ESTADOS;
 
 public class Butaca {
-    Butaca(ESTADOS estados){
+    public ESTADOS estado;
 
+    Butaca(ESTADOS estado){
+        this.estado = estado;
     }
+    static Butaca FREE_SEAT = new Butaca(ESTADOS.LIBRE);
+    static Butaca RESERVED_SEAT = new Butaca(ESTADOS.RESERVADO);
+    static Butaca SOLD_SEAT = new Butaca(ESTADOS.OCUPADO);
 
-//    @Override
-//    public String toString() {
-//        return switch (ESTADOS)) {
-//            case ESTADOS.LIBRE: {
-//                System.out.println("💺");
-//            }
-//            case ESTADOS.RESERVADO: {
-//                System.out.println("❌");
-//            }
-//            case ESTADOS.OCUPADO: {
-//                System.out.println("🍿");
-//            }
-//        }
-//    }
+    @Override
+    public String toString() {
+        return switch (estado){
+            case LIBRE -> "💺";
+            case OCUPADO -> "🍿";
+            case RESERVADO -> "❌";
+        };
+    }
 }

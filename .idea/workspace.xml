@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba1646fd-8955-427f-b715-4d6f0cd783ab" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Cine_Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cine_Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Butaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Butaca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Pelicula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Pelicula.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Sala.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Sala.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,14 +38,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/jiach/Desktop/DAM/Programación/Cine_JAVA/github/Cine_JAVA",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Cine_Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Cine_Main" />
+      <module name="Cine_JAVA" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Cine_Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,6 +73,7 @@
       <workItem from="1672685740890" duration="718000" />
       <workItem from="1672755274855" duration="5932000" />
       <workItem from="1672842523916" duration="3547000" />
+      <workItem from="1672934794463" duration="1344000" />
     </task>
     <servers />
   </component>

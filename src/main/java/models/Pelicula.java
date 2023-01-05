@@ -5,4 +5,14 @@ public class Pelicula {
     String year = "2022";
     String director = "James Cameron";
     String genre = "Science Fiction";
+
+    @Override
+    public String toString() {
+        return "Pelicula{" +
+                "title='" + title + '\'' +
+                ", year='" + year + '\'' +
+                ", director='" + director + '\'' +
+                ", genre='" + genre + '\'' +
+                '}';
+    }
 }
