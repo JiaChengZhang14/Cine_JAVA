@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba1646fd-8955-427f-b715-4d6f0cd783ab" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/models/SalaTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Cine_Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cine_Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Butaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Butaca.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Sala.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Sala.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +21,7 @@
         <option value="Record" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -43,11 +42,21 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "last_opened_file_path": "C:/Users/jiach/Desktop/DAM/Programación/Cine_JAVA/github/Cine_JAVA",
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="models" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Cine_Main">
     <configuration name="Cine_Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Cine_Main" />
       <module name="Cine_JAVA" />
@@ -55,9 +64,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SalaTest.doesColumnExistTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Cine_JAVA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="models" />
+      <option name="MAIN_CLASS_NAME" value="models.SalaTest" />
+      <option name="METHOD_NAME" value="doesColumnExistTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalaTest.rowLetterToNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Cine_JAVA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="models" />
+      <option name="MAIN_CLASS_NAME" value="models.SalaTest" />
+      <option name="METHOD_NAME" value="rowLetterToNumber" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Cine_Main" />
+        <item itemvalue="JUnit.SalaTest.doesColumnExistTest" />
+        <item itemvalue="JUnit.SalaTest.rowLetterToNumber" />
       </list>
     </recent_temporary>
   </component>
@@ -73,7 +116,7 @@
       <workItem from="1672685740890" duration="718000" />
       <workItem from="1672755274855" duration="5932000" />
       <workItem from="1672842523916" duration="3547000" />
-      <workItem from="1672934794463" duration="1344000" />
+      <workItem from="1672934794463" duration="3034000" />
     </task>
     <servers />
   </component>
