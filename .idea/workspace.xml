@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba1646fd-8955-427f-b715-4d6f0cd783ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/models/SalaTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Sala.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Sala.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/models/SalaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/SalaTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,17 +36,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/jiach/Desktop/DAM/Programación/Cine_JAVA/github/Cine_JAVA",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jiach/Desktop/DAM/Programación/Cine_JAVA/github/Cine_JAVA&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -60,6 +59,37 @@
     <configuration name="Cine_Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Cine_Main" />
       <module name="Cine_JAVA" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Cine_JAVA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="models" />
+      <option name="MAIN_CLASS_NAME" value="models.SalaTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalaTest.changeSeatStatusToReservedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Cine_JAVA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="models.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="models" />
+      <option name="MAIN_CLASS_NAME" value="models.SalaTest" />
+      <option name="METHOD_NAME" value="changeSeatStatusToReservedTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -99,6 +129,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Cine_Main" />
+        <item itemvalue="JUnit.SalaTest" />
+        <item itemvalue="JUnit.SalaTest.changeSeatStatusToReservedTest" />
         <item itemvalue="JUnit.SalaTest.doesColumnExistTest" />
         <item itemvalue="JUnit.SalaTest.rowLetterToNumber" />
       </list>
@@ -116,7 +148,9 @@
       <workItem from="1672685740890" duration="718000" />
       <workItem from="1672755274855" duration="5932000" />
       <workItem from="1672842523916" duration="3547000" />
-      <workItem from="1672934794463" duration="3034000" />
+      <workItem from="1672934794463" duration="3402000" />
+      <workItem from="1673023348118" duration="3427000" />
+      <workItem from="1673031141083" duration="484000" />
     </task>
     <servers />
   </component>

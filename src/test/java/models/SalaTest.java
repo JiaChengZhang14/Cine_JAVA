@@ -4,7 +4,7 @@ package models;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static models.Butaca.FREE_SEAT;
+import static models.Butaca.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -23,39 +23,31 @@ class SalaTest {
         }
     }
 
-
-    @Test
-    void processPucharseTest() {
-    }
-
-    @Test
-    void processFormalizationTest() {
-    }
-
     @Test
     void changeSeatStatusToOccupiedTest() {
-    }
 
-    @Test
-    void processCancellationTest() {
+        testMatrix[1][0] = FREE_SEAT;
+        assertEquals(SOLD_SEAT, Sala.changeSeatStatusToOccupied(testMatrix, "1", 1));
     }
 
     @Test
     void changeSeatStatusToFreeTest() {
+        testMatrix[1][0] = SOLD_SEAT;
+        assertEquals(FREE_SEAT, Sala.changeSeatStatusToFree(testMatrix, "1", 1));
     }
-
     @Test
     void isSeatReservedTest() {
+
+        // Pongo el asiento B:1 como reservado y testeo la función.
+        testMatrix[1][0] = RESERVED_SEAT;
         assertTrue(Sala.isSeatReserved("B:1", testMatrix));
         assertFalse(Sala.isSeatReserved("B:2", testMatrix));
     }
 
     @Test
-    void processReservationTest() {
-    }
-
-    @Test
     void changeSeatStatusToReservedTest() {
+        testMatrix[1][0] = FREE_SEAT;
+        assertEquals(RESERVED_SEAT, Sala.changeSeatStatusToReserved(testMatrix, "1", 1));
     }
 
     @Test
