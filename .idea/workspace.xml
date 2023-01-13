@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ba1646fd-8955-427f-b715-4d6f0cd783ab" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cine_Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cine_Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/enums/ESTADOS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/ESTADOS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/Butaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Butaca.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/Sala.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Sala.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/models/SalaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/SalaTest.java" afterDir="false" />
     </list>
@@ -150,7 +153,14 @@
       <workItem from="1672842523916" duration="3547000" />
       <workItem from="1672934794463" duration="3402000" />
       <workItem from="1673023348118" duration="3427000" />
-      <workItem from="1673031141083" duration="484000" />
+      <workItem from="1673031141083" duration="1502000" />
+      <workItem from="1673253678866" duration="996000" />
+      <workItem from="1673255312083" duration="587000" />
+      <workItem from="1673271309069" duration="1830000" />
+      <workItem from="1673280791131" duration="1448000" />
+      <workItem from="1673377458800" duration="4198000" />
+      <workItem from="1673434844662" duration="3000" />
+      <workItem from="1673519075485" duration="54000" />
     </task>
     <servers />
   </component>

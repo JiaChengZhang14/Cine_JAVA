@@ -127,7 +127,7 @@ class SalaTest {
         assertTrue(Sala.doesColumnExist("A:15", column));
         assertFalse(Sala.doesColumnExist("A:16", column));
         assertTrue(Sala.doesColumnExist("a:1", column));
-
-
+        
+        
     }
 }

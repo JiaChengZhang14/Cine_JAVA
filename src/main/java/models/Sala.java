@@ -15,6 +15,7 @@ public class Sala {
     static Double totalCash = 0.0;
     static int soldSeatsCount = 0;
     static int reservedSeatsCount = 0;
+    static double normalSeatPrice = 5.25;
     static Scanner sc = new Scanner(System.in);
     /**
      * @author JiaCheng Zhang
@@ -117,7 +118,7 @@ public class Sala {
         } while (isSeatReserved(soldSeat, seatsMatrix));
         System.out.println("El asiento ha sido comprado correctamente");
         System.out.println("Se te ha hecho el cobre de 5.25€ automáticamente.");
-        totalCash += 5.25;
+        totalCash += normalSeatPrice;
         soldSeatsCount++;
         return soldSeat;
     }
@@ -133,8 +134,6 @@ public class Sala {
         String selectedRow = processedFormalization[0];
         String selectedColumn = processedFormalization[1];
         int processedRow = rowLetterToNumber(selectedRow);
-
-
         changeSeatStatusToOccupied(seatsMatrix, selectedColumn, processedRow);
         printSeats(seatsMatrix);
     }
@@ -306,7 +305,6 @@ public class Sala {
         int processedRow = rowLetterToNumber(selectedRow);
         changeSeatStatusToReserved(seatsMatrix, selectedColumn, processedRow);
         printSeats(seatsMatrix);
-
 
     }
 
