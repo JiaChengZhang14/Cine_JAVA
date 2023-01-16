@@ -162,6 +162,7 @@ public class Sala {
     public static String formalizeReservation(Butaca[][] seatsMatrix, int column, int row) {
         System.out.println();
         var toBeFormalizedReservation = "";
+        printSeats(seatsMatrix);
         Pattern regex = Pattern.compile("[A-Z]:[0-9]+");
 
         System.out.println("Introduce el asiento que has reservado, para que podamos formalizar la reserva por usted y finalizar la compra de esta: ");
